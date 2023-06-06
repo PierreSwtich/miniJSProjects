@@ -90,33 +90,14 @@ select {
 
 @media (max-width: 600px) {
     .wrapper {
-        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
     }
+}
 
-    .top {
-        height: 150px;
-    }
-
-    .label {
-        font-size: 18px;
-    }
-
-    input,
-    select {
-        margin-bottom: 20px;
-        padding: 6px 8px;
-    }
-
-    .count {
-        padding: 16px 8px;
-        font-size: 20px;
-    }
-
-    .cost-info {
-        font-size: 18px;
-    }
-
-    .error {
-        font-size: 16px;
-    }
+.top {
+    height: 300px;
 }
