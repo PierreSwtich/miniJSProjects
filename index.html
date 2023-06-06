@@ -13,12 +13,12 @@
         <div class="wrapper">
             <div class="header">
                 <div class="shadow"></div>
-                <h1>Drink Search</h1>
-                <input type="text" class="search" placeholder="Enter name of the drink">
+                <h1 data-testid="searchHeader">Drink Search</h1>
+                <input type="text" class="search" placeholder="Enter name of the drink" data-testid="drinkInput">
             </div>
-            <div class="drink-list">
-                <h2>List of available drinks</h2>
-                <ul>
+            <div class="drink-list" data-testid="listbox">
+                <h2 data-testid="listTitle">List of available drinks</h2>
+                <ul data-testid="listOfDrinks">
                     <li>Mojito</li>
                     <li>Old Fashioned</li>
                     <li>Margarita</li>
@@ -34,7 +34,7 @@
                     <li>Daiquiri</li>
                     <li>Moscow Mule</li>
                     <li>Gin and Tonic</li>
-                    <span>No results. please try again!</span>
+                    <span data-testid="noResults">No results. please try again!</span>
                 </ul>
             </div>
         </div>
