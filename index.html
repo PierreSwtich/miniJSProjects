@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Wyszukiwarka napojów</title>
+        <title>Form Validator</title>
         <link rel="stylesheet" href="main-style.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,33 +11,41 @@
     </head>
     <body>
         <div class="wrapper">
-            <div class="header">
-                <div class="shadow"></div>
-                <h1 data-testid="searchHeader">Drink Search</h1>
-                <input type="text" class="search" placeholder="Enter name of the drink" data-testid="drinkInput">
-            </div>
-            <div class="drink-list" data-testid="listbox">
-                <h2 data-testid="listTitle">List of available drinks</h2>
-                <ul data-testid="listOfDrinks">
-                    <li>Mojito</li>
-                    <li>Old Fashioned</li>
-                    <li>Margarita</li>
-                    <li>Whiskey Sour</li>
-                    <li>Pina Colada</li>
-                    <li>Sangria</li>
-                    <li>Mai Tai</li>
-                    <li>Caipirinha</li>
-                    <li>Mimosa</li>
-                    <li>Martini</li>
-                    <li>Manhattan</li>
-                    <li>Negroni</li>
-                    <li>Daiquiri</li>
-                    <li>Moscow Mule</li>
-                    <li>Gin and Tonic</li>
-                    <span data-testid="noResults">No results. Please try again!</span>
-                </ul>
-            </div>
+            <form>
+                <h1>Sign UP!</h1>
+
+                <div class="form-box">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" placeholder="Enter your username">
+                    <p class="error-text">error</p>
+                </div>
+                <div class="form-box">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" placeholder="Create Password">
+                    <p class="error-text">error</p>
+                </div>
+                <div class="form-box">
+                    <label for="password2">Re-type Password:</label>
+                    <input type="password" id="password2" placeholder="Confirm Password">
+                    <p class="error-text">error</p>
+                </div>
+                <div class="form-box">
+                    <label for="email">Email address:</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                    <p class="error-text">error</p>
+                </div>
+
+                <div class="control-buttons">
+                    <button class="clear">Reset</button>
+                    <button class="send">Send!</button>
+                </div>
+
+                <div class="popup">
+                    <p>Sign up form has been sent!</p>
+                    <button class="close">Close</button>
+                </div>
+            </form>
         </div>
-        <script src="searchscript.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>

@@ -9,125 +9,232 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* font-family: 'Dancing Script', cursive; */
     font-family: 'Montserrat', sans-serif;
-    background-color: rgb(233,233,233);
+    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
 }
 
 .wrapper {
-    width: 800px;
+    width: 440px;
     background-color: #fff;
     box-shadow: 0 0 10px #000;
     border-radius: 15px;
 }
 
-.header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    flex-direction: column;
-    position: relative;
-    height: 360px;
-    padding: 20px 40px;
-    font-family: 'Dancing Script', cursive;
-    background-image: url('https://img.freepik.com/free-photo/fresh-cocktails-with-ice-lemon-lime-fruits-generative-ai_188544-12370.jpg?w=900&t=st=1686064476~exp=1686065076~hmac=b88731a5f3ee2a1255dcfad096f2a7f7476f7c487efef07ef01a73f400e934aa');
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-    border-radius: 15px;
-}
-.shadow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,.25);
-    z-index: -1;
-    border-radius: 15px;
+form {
+  padding: 40px;
+  font-size: 20px;
+
 }
 
 h1 {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.form-box {
+  margin-bottom: 15px;
+}
+
+.form-box label {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.form-box input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid rgb(197,197,197);
+  border-radius: 5px;
+}
+
+.form-box error input {
+  border: 1px solid rgb(0,137,250);
+  background-color: rgba(0,137,250, .1);
+}
+
+.form-box .error-text {
+  margin: 5px 0 0 10px;
+  font-size: 14px;
+  color: rgb(0,137,250);
+  visibility: hidden;
+}
+
+.form-box.error .error-text {
+  visibility: visible;
+}
+
+.control-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.send,
+.clear, 
+.close {
+  display: block;
+  padding: 10px 0;
+  margin-left: 10px;
+  width: 100px;
+  font-size: 18px;
+  background-color: rgb(0,140,255);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.send:hover,
+.clear:hover,
+.close:hover {
+  background-color: rgb(0,107,194);
+}
+
+.popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: -350px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 200px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 2px solid black;
+  transition: top .5s;
+}
+
+.popup p {
+  font-size: 28px;
+}
+
+.popup .close {
+  margin-top: 20px;
+}
+
+.show-popup {
+  top: 150px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+}
+
+.wrapper {
+    width: 440px;
+    background-color: #fff;
+    box-shadow: 0 0 10px #000;
+}
+
+form {
+    padding: 40px;
+    font-size: 20px;
+}
+
+h1 {
+    text-align: center;
     margin-bottom: 30px;
-    color: #fff;
-    font-size: 50px;
 }
 
-.search {
-    padding: 10px 20px;
-    margin-bottom: 40px;
+.form-box {
+    margin-bottom: 15px;
+}
+
+.form-box label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.form-box input {
     width: 100%;
+    padding: 10px;
     font-size: 16px;
+    border: 1px solid rgb(197, 197, 197);
     border-radius: 5px;
-    background-color: rgba(225,225,225, .75);
 }
 
-.drink-list {
-    padding: 20px 40px;
+.form-box.error input {
+    border: 1px solid rgb(0, 137, 250);
+    background-color: rgba(0, 137, 250, .1);
 }
 
-h2 {
-    padding: 30px 0;
+.form-box .error-text {
+    visibility: hidden;
+    margin: 5px 0 0 10px;
+    font-size: 14px;
+    color: rgb(0, 137, 250);
 }
 
-ul {
-    padding-bottom: 30px;
-    font-size: 23px;
-    list-style: none;
+.form-box.error .error-text {
+    visibility: visible;
 }
 
-li {
-    padding: 8px 30px;
-    border-bottom: 1px solid rgb(226,226,226);
+.control-buttons {
+    display: flex;
+    justify-content: flex-end;
 }
 
-li:last-child{
-    border-bottom: none;
+.send,
+.clear,
+.close {
+    display: block;
+    padding: 10px 0;
+    margin-left: 10px;
+    width: 100px;
+    font-size: 18px;
+    background-color: rgb(0, 140, 255);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color .3s;
 }
 
-ul > span {
-    display: none;
-  }
+.send:hover,
+.clear:hover,
+.close:hover {
+    background-color: rgb(0, 107, 194);
+}
 
-/* MOBILE VERSION*/ 
+.popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: -300px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 200px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    border: 2px solid black;
+    transition: top .5s;
+}
 
-/* Existing CSS code... */
+.popup p {
+    font-size: 28px;
+}
 
-@media (max-width: 768px) {
-    .wrapper {
-      width: 100%;
-    }
-  
-    .header {
-      height: 200px;
-      padding: 10px;
-      font-size: 24px;
-    }
-  
-    h1 {
-      font-size: 36px;
-    }
-  
-    .search {
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
-  
-    .drink-list {
-      padding: 10px;
-    }
-  
-    h2 {
-      padding: 20px 0;
-      font-size: 24px;
-    }
-  
-    ul {
-      font-size: 18px;
-    }
-  
-    li {
-      padding: 6px 15px;
-    }
-  }
-  
+.popup button {
+    margin-top: 20px;
+}
+
+.show-popup {
+    top: 150px;
+}
