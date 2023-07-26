@@ -1,103 +1,72 @@
-const username = document.querySelector('#username');
-const password = document.querySelector('#password');
-const password2 = document.querySelector('#password2');
-const email = document.querySelector('#email');
-const sendBtn = document.querySelector('.send');
-const clearBtn = document.querySelector('.clear');
-const popup = document.querySelector('.popup');
+const ball = document.querySelector('img');
+const input = document.querySelector('input');
+const answer = document.querySelector('.answer');
+const error = document.querySelector('.error')
+
+const answers = [
+    "Absolutely!", "It is certain.", "Without a doubt.", "Yes, definitely.", "You can count on it.", "Most likely.", "Outlook good.", "Signs point to yes.", "Reply hazy, try again.", "Ask again later.",
+    "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", "Don't count on it.", "My sources say no.", "Outlook not so good.", "Very doubtful.", "No way!"
+  ];
+
+function consoleALL() {
+    console.log(ball);
+    console.log(input);
+    console.log(answer);
+    console.log(error);
+};
 
 
-const showError = ( input, msg ) => {
+const checkInput = () => {
+    const inputRegex = /^[a-zA-Z0-9]+?\?$/;
+    const inputRegex2 = /^\?+$/;
+    if(input.value !== '' && inputRegex.test(input.value)) {
+        error.textContent = '';
+        shakeBall();
+        return true;
+    } else if (input.value !== '' && inputRegex2.test(input.value)) {
+        error.textContent = 'You are really sneeky, you have to ask me a question first not only "?"';
+        answer.innerHTML = `<span></span>`;
+        ball.classList.remove('shake-animation');
+        return false;
+    } else if (input.value == '') {
+        error.textContent = 'You have to ask question first!';
+        answer.innerHTML = `<span></span>`;
+        ball.classList.remove('shake-animation');
 
-  const formBox = input.parentElement;
-  const errorMsg = formBox.querySelector('.error-text');
-
-  formBox.classList.add('error');
-  errorMsg.textContent = msg;
-}
-
-const clearError = input => {
-  const formBox = input.parentElement;
-  formBox.classList.remove('error')
-}
-
-
-const checkForm = input => {
-
-  input.forEach(el => {
-    if(el.value === ''){
-      showError(el, el.placeholder);
+        return false;
     } else {
-      clearError(el);
+        error.textContent = 'Your question needs to be a question → add "?" at the end please!';
+        answer.innerHTML = `<span></span>`;
+        ball.classList.remove('shake-animation');
+        return false;
     }
-  });
-}
+};
 
-const checkLength = (input, min) => {
 
-  if(input.value.length < min){
-    //const prefixText = input.previousElementSibling.innerText
-    //const prefixRM = prefixText.replace(':', '')
-    showError(input, `${input.previousElementSibling.innerText.slice(0,-1)} should have at least ${min} characters.`)
-  }
-}
-
-const checkPassword = (password1, password2) => {
-
-  if(password1.value !== password2.value){
-    showError(password2, 'Password does not match.')
-  }
-}
-
-const checkMail = email => {
-
-  const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,12}))$/;
-
-  if(regex.test(email.value)){
-    clearError(email)
-  } else {
-    showError(email, "Incorrect email")
-  }
-}
-
-const checkErrors = () => {
-
-  const allInputs = document.querySelectorAll('.form-box');
-  let errorCount = 0;
-
-  allInputs.forEach(el => {
-
-    if(el.classList.contains('error')){
-      errorCount++;
-    }
-  });
-
-    if (errorCount === 0) {
-      popup.classList.add('show-popup')
-    }
+const generateAnswer = () => {
     
-  console.log(errorCount)
+    if(checkInput() === true){
+    const number = Math.floor(Math.random() * 19)
+    answer.innerHTML = `<span>Answer:</span> ${answers[number]}`
+    }
+};
+
+const enter = (event) => {
+    if (event.key === 'Enter') {
+        generateAnswer();
+    }
+};
+
+const shakeBall = () => {
+    ball.classList.add('shake-animation');
+    setTimeout(() => {
+        ball.classList.remove('shake-animation');
+    }, 1000);
+    
 }
 
 
-sendBtn.addEventListener('click', e => {
-  e.preventDefault();
-  checkForm([username, password, password2, email]);
-  checkLength(username, 3);
-  checkLength(password, 8);
-  checkPassword(password, password2);
-  checkMail(email)
-  checkErrors();
-})
-
-clearBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-
-  [username, password, password2, email].forEach(el => {
-    el.value = '';
-    clearError(el);
-  });
-
-});
+ball.addEventListener('click', generateAnswer);
+input.addEventListener('keypress', enter);
 
 

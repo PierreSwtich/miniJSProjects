@@ -11,40 +11,23 @@
     </head>
     <body>
         <div class="wrapper">
-            <form>
-                <h1>Sign UP!</h1>
 
-                <div class="form-box">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" placeholder="Enter your username">
-                    <p class="error-text">error</p>
-                </div>
-                <div class="form-box">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" placeholder="Create Password">
-                    <p class="error-text">error</p>
-                </div>
-                <div class="form-box">
-                    <label for="password2">Re-type Password:</label>
-                    <input type="password" id="password2" placeholder="Confirm Password">
-                    <p class="error-text">error</p>
-                </div>
-                <div class="form-box">
-                    <label for="email">Email address:</label>
-                    <input type="email" id="email" placeholder="Enter your email">
-                    <p class="error-text">error</p>
-                </div>
+            <div class="info">
+                <h1>Magic Ball</h1>
+                <p>Do not hesitate, ask a question and poke the bill!</p>
+            </div>
 
-                <div class="control-buttons">
-                    <button class="clear">Reset</button>
-                    <button class="send">Send!</button>
-                </div>
+            <div class="ball-img">
+                <img src="https://cdn.pixabay.com/photo/2012/04/16/11/05/ball-35516_1280.png" alt="Magic ball number 8 black">
+            </div>
 
-                <div class="popup">
-                    <p>Sign up form has been sent!</p>
-                    <button class="close">Close</button>
-                </div>
-            </form>
+            <div class="question-area">
+                <h2>Enter your question:</h2>
+                <input type="text">
+                <p class="answer"></p>
+                <p class="error"></p>
+            </div>
+
         </div>
         <script src="script.js"></script>
     </body>
